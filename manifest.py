@@ -14,7 +14,13 @@ def findFileName(manifest):
 		return(i)
 	else:
 		return(-1)
-	
+
+def removeLeadingSpace(cell):
+	if (cell[0] == " "):
+		return(cell[1:])
+	else:
+		return(cell)
+		
 
 def main():  
 
@@ -57,7 +63,7 @@ def main():
 						closeTag = "</" + manifest[headerRow][j] + ">\n"
 						
 						#Add field to the xml file
-						f.write(openTag + cell + closeTag)
+						f.write(openTag + removeLeadingSpace(cell) + closeTag)
 						
 				#Add xml footer
 				f.write("</rdf:RDF>")
